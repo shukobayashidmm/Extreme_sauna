@@ -1,0 +1,26 @@
+<h1>全国のサウナ一覧</h1>
+<%= link_to "サウナを登録する", admin_saunas_new_path %>
+
+
+<table>
+    <thead>
+        <tr>
+            <td>登録番号</td>
+            <td>店名</td>
+            <td>営業時間</td>
+            <td>都道府県</td>
+            <td>住所</td>
+        </tr>
+    </thead>
+    <% @saunas.each do |sauna| %>
+    <tbody>
+        <tr>
+            <td><%= sauna.id %></td>
+            <td><%= link_to sauna.name, admin_saunas_show_path(sauna) %></td>
+            <td><%= sauna.business_hour %></td>
+            <td><%= sauna.prefecture %></td>
+            <td><%= sauna.address %></td>
+        </tr>
+    </tbody>
+    <% end %>
+</table>

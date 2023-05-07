@@ -1,0 +1,14 @@
+<h1>サウナの投稿フォーム</h1>
+
+<%= form_with model: @sauna, url: admin_saunas_create_path, method: :post do |f| %>
+
+<p>店名：<%= f.text_field :name %></p>
+<p>価格：<%= f.text_field :price %></p>
+<p>営業時間：<%= f.text_field :business_hour %></p>
+<p>サウナの室内温度：<%= f.text_field :room_temperature %></p>
+<p>水風呂の温度：<%= f.text_field :water_temperature %></p>
+<p>都道府県：<%= f.text_field :prefecture %></p>
+<p>住所：<%= f.text_field :address %></p>
+
+<%= f.submit '保存' %>
+<% end %>

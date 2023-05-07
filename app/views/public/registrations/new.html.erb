@@ -1,7 +1,56 @@
-<h2>Sign up</h2>
+<h2>新規登録だよ〜！</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
+  
+  
+  <!--名前-->
+  <div class="field">
+    <%= f.label :姓 %>
+    <%= f.text_field :last_name %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :名 %>
+    <%= f.text_field :first_name %>
+  </div>
+  
+　<!--カナ-->
+　<div class="field">
+    <%= f.label :セイ %>
+    <%= f.text_field :last_name_kana %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :メイ %>
+    <%= f.text_field :first_name_kana %>
+  </div>
+  
+  <!--郵便番号-->
+  <div class="field">
+    <%= f.label :郵便番号 %>
+    <%= f.text_field :postcode %>
+  </div>
+  
+  <!--住所-->
+  <div class="field">
+    <%= f.label :住所 %>
+    <%= f.text_field :address %>
+  </div>
+  
+  <!--電話番号-->
+  <div class="field">
+    <%= f.label :電話番号 %>
+    <%= f.text_field :telephone_number %>
+  </div>
+  
+  <!--生年月日-->
+  <div class="field">
+    <%= f.label :生年月日 %>
+    <%= f.text_field :birthday %>
+  </div>
+  
+  
 
   <div class="field">
     <%= f.label :email %><br />
@@ -25,5 +74,4 @@
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
 <%= render "public/shared/links" %>
