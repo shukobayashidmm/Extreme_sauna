@@ -15,5 +15,6 @@ class Public::SaunasController < ApplicationController
     end
     
     def map
+        @sauna = Sauna.find(params[:id])
     end
 end

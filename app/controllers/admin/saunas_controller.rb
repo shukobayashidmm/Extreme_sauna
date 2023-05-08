@@ -47,6 +47,6 @@ class Admin::SaunasController < ApplicationController
     private
   def sauna_params
     params.require(:sauna).permit(:name, :price, :business_hour, :room_temperature, :water_temperature, :prefecture, 
-    :address)
+    :address, :latitude, :longitude)
   end
 end
