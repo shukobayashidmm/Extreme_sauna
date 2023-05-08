@@ -1,0 +1,14 @@
+<h1>全国のサウナ一覧ページ</h1>
+
+<% @saunas.each do |sauna| %>
+<table>
+    <tr>
+        <td><%= link_to sauna.name, public_saunas_show_path(sauna) %></td>
+        <td><%= sauna.price %>円</td>
+        <td><%= sauna.prefecture %></td>
+        <td><%= sauna.address %></td>
+    </tr>
+</table>
+
+
+<% end %>

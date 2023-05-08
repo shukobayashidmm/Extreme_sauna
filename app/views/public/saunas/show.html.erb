@@ -1,0 +1,10 @@
+<h1><%= @sauna.name %>の詳細画面</h1>
+<%= link_to "アクセスマップ", public_saunas_map_path(@sauna) %>
+
+<p>店名：<%= @sauna.name %></p>
+<p>価格：<%= @sauna.price %>円</p>
+<p>営業時間：<%= @sauna.business_hour %></p>
+<p>サウナの室内温度：<%= @sauna.room_temperature %></p>
+<p>水風呂の温度：<%= @sauna.water_temperature %></p>
+<p>都道府県：<%= @sauna.prefecture %></p>
+<p>住所：<%= @sauna.address %></p>
