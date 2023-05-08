@@ -6,7 +6,7 @@ Geocoder.configure(
     Geocoder::InvalidRequest,
     Geocoder::InvalidApiKey
   ],
-  api_key:  ENV['GOOGLEMAP'] ,
+  api_key: 'AIzaSyAj-NweavtbXsBY8RnDkChZ0q38eTE-dCw',
   use_https: true
   # Geocoding options
   # timeout: 3,                 # geocoding service timeout (secs)

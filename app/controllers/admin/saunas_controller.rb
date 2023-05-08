@@ -14,7 +14,6 @@ class Admin::SaunasController < ApplicationController
         sauna = Sauna.new(sauna_params)
         sauna.save
         redirect_to admin_saunas_path
-        
     end
     
     def show

@@ -8,3 +8,6 @@
 <p>水風呂の温度：<%= @sauna.water_temperature %></p>
 <p>都道府県：<%= @sauna.prefecture %></p>
 <p>住所：<%= @sauna.address %></p>
+
+<%= link_to "レビュー一覧", public_sauna_reviews_path(sauna_id: @sauna.id) %>
+<%= link_to "投稿フォーム", new_public_sauna_review_path(sauna_id: @sauna.id) %>

@@ -13,11 +13,20 @@ root to: "public/homes#top"
 ###public###
 
 #サウナ情報
-get '/public/saunas' => 'public/saunas#index'
+get '/public/saunas' => 'public/saunas#index' 
 get '/public/saunas/:id' => 'public/saunas#show', as: :public_saunas_show
 get '/public/saunas/search' => 'public/saunas#search'
 get '/public/saunas/result' => 'public/saunas#result'
 get '/public/saunas/:id/map' => 'public/saunas#map', as: :public_saunas_map
+
+#レビュー
+get '/public/saunas/:sauna_id/reviews' => 'public/reviews#index', as: :public_sauna_reviews
+get '/public/saunas/:sauna_id/reviews/new' => 'public/reviews#new', as: :new_public_sauna_review
+post '/public/saunas/:sauna_id/reviews' => 'public/reviews#create', as: :public_sauna_reviews_create
+get '/public/saunas/:sauna_id/reviews/:id' => 'public/reviews#show', as: :public_sauna_review
+get '/public/saunas/:sauna_id/reviews/:id/edit' => 'public/reviews#edit', as: :edit_public_sauna_review
+patch '/public/saunas/:sauna_id/reviews/:id' => 'public/reviews#update', as: :public_sauna_review_update
+delete '/public/saunas/:sauna_id/reviews/:id' => 'public/reviews#destroy', as: :public_sauna_review_destroy
 
 
 #マイページ
@@ -26,6 +35,8 @@ get '/public/users/my_page' => 'public/users#show'
 get '/public/users/infomation/edit' => 'public/users#edit'
 patch '/public/users/infomation' => 'public/users#update'
 get '/public/users/unsubscribe' => 'public/users#unsubscribe'
+
+
 
 
 ###admin###

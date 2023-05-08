@@ -1,4 +1,6 @@
-<h1>アクセスマップ</h1>
+<h1><%= @sauna.name %>への行き方はこちら</h1>
+<p>都道府県：<%= @sauna.prefecture %></p>
+<p>住所：<%= @sauna.address %></p>
 
 <div id="map"></div>
 <style>
@@ -12,7 +14,7 @@
     var uluru = {lat: <%= @sauna.latitude %>, lng: <%= @sauna.longitude %>};
     var map = new google.maps.Map(document.getElementById('map'), {
     zoom: 16,
-    enter: uluru
+    center: uluru
     });
     var marker = new google.maps.Marker({
       position: uluru,
@@ -20,4 +22,4 @@
     });
        }
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLEMAP'] %>&callback=initMap"async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAj-NweavtbXsBY8RnDkChZ0q38eTE-dCw&callback=initMap"async defer></script>
