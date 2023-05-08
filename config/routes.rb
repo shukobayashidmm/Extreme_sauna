@@ -10,6 +10,15 @@ Rails.application.routes.draw do
 
 root to: "public/homes#top"
 
+###public###
+
+#サウナ情報
+get '/public/saunas' => 'public/saunas#index'
+get '/public/saunas/:id' => 'public/saunas#show'
+get '/public/saunas/search' => 'public/saunas#search'
+get '/public/saunas/result' => 'public/saunas#result'
+get '/public/saunas/:id/map' => 'public/saunas#map'
+
 
 #マイページ
 delete '/public/users/destroy' => 'public/users#destroy'
@@ -17,6 +26,9 @@ get '/public/users/my_page' => 'public/users#show'
 get '/public/users/infomation/edit' => 'public/users#edit'
 patch '/public/users/infomation' => 'public/users#update'
 get '/public/users/unsubscribe' => 'public/users#unsubscribe'
+
+
+###admin###
 
 #会員一覧
 get 'admin/users' => 'admin/users#index'
