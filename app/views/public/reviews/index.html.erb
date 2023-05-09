@@ -1,4 +1,5 @@
 <h1><%= @sauna.name %>へのレビュー</h1>
+<%= link_to "投稿フォーム", new_public_sauna_review_path(sauna_id: @sauna.id) %>
 
 <% @reviews.each do |review| %>
 <table>

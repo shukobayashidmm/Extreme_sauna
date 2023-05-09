@@ -5,8 +5,8 @@
 <table>
     <thead>
         <tr>
-            <td>登録番号</td>
             <td>店名</td>
+            <td>料金</td>
             <td>営業時間</td>
             <td>都道府県</td>
             <td>住所</td>
@@ -16,8 +16,8 @@
     <% @saunas.each do |sauna| %>
     <tbody>
         <tr>
-            <td><%= sauna.id %></td>
             <td><%= link_to sauna.name, admin_saunas_show_path(sauna) %></td>
+            <td><%= sauna.price %>円</td>
             <td><%= sauna.business_hour %></td>
             <td><%= sauna.prefecture %></td>
             <td><%= sauna.address %></td>
