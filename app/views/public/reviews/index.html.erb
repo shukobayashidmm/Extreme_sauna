@@ -1,1 +1,14 @@
 <h1><%= @sauna.name %>へのレビュー</h1>
+
+<% @reviews.each do |review| %>
+<table>
+    <tr>
+        <td><%= review.id %></td>
+        <td><%= review.user.last_name %><%= review.user.first_name %></td>
+        <td><%= link_to review.content, edit_public_sauna_review_path(id: review.id) %></td>
+    </tr>
+    
+</table>
+
+
+<% end %>

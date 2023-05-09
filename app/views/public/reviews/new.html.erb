@@ -1,1 +1,7 @@
 <h1>投稿フォーム</h1>
+<%= form_with model: [@sauna, @review],  url: public_sauna_reviews_create_path, method: :post do |f| %>
+<p>コメント：<%= f.text_area :content %></p>
+
+
+<%= f.submit '保存' %>
+<% end %>

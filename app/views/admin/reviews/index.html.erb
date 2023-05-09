@@ -1,0 +1,24 @@
+<h1><%= @sauna.name %>のレビュー一覧</h1>
+
+
+<table>
+    <thead>
+    <tr>
+        <td>会員名</td>
+        <td>レビュー内容</td>
+        <td></td>
+    </tr>
+    </thead>
+    <% @reviews.each do |review| %>
+    <tbody>
+        <tr>
+            <td><%= review.user.last_name %><%= review.user.first_name %></td>
+            <td><%= review.content %></td>
+            <td><%= link_to "削除", admin_reviews_destroy_path(sauna_id: @sauna.id, id: review.id), method: :delete %></td>
+        </tr>
+    </tbody>
+    <% end %>
+</table>
+
+
+

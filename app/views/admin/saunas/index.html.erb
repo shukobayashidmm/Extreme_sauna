@@ -10,6 +10,7 @@
             <td>営業時間</td>
             <td>都道府県</td>
             <td>住所</td>
+            <td>レビュー</td>
         </tr>
     </thead>
     <% @saunas.each do |sauna| %>
@@ -20,6 +21,7 @@
             <td><%= sauna.business_hour %></td>
             <td><%= sauna.prefecture %></td>
             <td><%= sauna.address %></td>
+            <td><%= sauna.reviews.count %>件</td>
         </tr>
     </tbody>
     <% end %>

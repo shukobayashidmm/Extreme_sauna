@@ -23,7 +23,6 @@ get '/public/saunas/:id/map' => 'public/saunas#map', as: :public_saunas_map
 get '/public/saunas/:sauna_id/reviews' => 'public/reviews#index', as: :public_sauna_reviews
 get '/public/saunas/:sauna_id/reviews/new' => 'public/reviews#new', as: :new_public_sauna_review
 post '/public/saunas/:sauna_id/reviews' => 'public/reviews#create', as: :public_sauna_reviews_create
-get '/public/saunas/:sauna_id/reviews/:id' => 'public/reviews#show', as: :public_sauna_review
 get '/public/saunas/:sauna_id/reviews/:id/edit' => 'public/reviews#edit', as: :edit_public_sauna_review
 patch '/public/saunas/:sauna_id/reviews/:id' => 'public/reviews#update', as: :public_sauna_review_update
 delete '/public/saunas/:sauna_id/reviews/:id' => 'public/reviews#destroy', as: :public_sauna_review_destroy
@@ -58,6 +57,11 @@ get '/admin/saunas/:id/edit' => 'admin/saunas#edit', as: :admin_saunas_edit
 delete '/admin/saunas/:id' => 'admin/saunas#destroy', as: :admin_saunas_destroy
 get '/admin/saunas/search' => 'admin/saunas#search'
 get '/admin/saunas/result' => 'admin/saunas#result'
+
+
+#レビュー
+get '/admin/:sauna_id/reviews/' => 'admin/reviews#index', as: :admin_reviews_index
+delete '/admin/:sauna_id/reviews/:id' => 'admin/reviews#destroy', as: :admin_reviews_destroy
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
