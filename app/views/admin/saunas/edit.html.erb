@@ -2,6 +2,7 @@
 
 <%= form_with model: @sauna, url: admin_saunas_update_path, method: :patch do |f| %>
 <p>店名：<%= f.text_field :name %></p>
+<p>店の外観： <%= f.file_field :image, accept: "image/*" %></p>
 <p>料金：<%= f.text_field :price %>円</p>
 <p>営業時間：<%= f.text_field :business_hour %></p>
 <p>サウナの室内温度：<%= f.text_field :room_temperature %>度</p>

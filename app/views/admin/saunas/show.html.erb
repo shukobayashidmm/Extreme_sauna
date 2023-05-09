@@ -2,6 +2,13 @@
 
 <p>サウナID：<%= @sauna.id %></p>
 <p>店名：<%= @sauna.name %></p>
+<p>店の外観：
+<% if @sauna.image.attached? %>
+  <%= image_tag @sauna.image, size: "300x300" %>
+<% else %>
+  <%= image_tag 'no_image', size: "300x300" %>
+<% end %>
+</p>
 <p>料金：<%= @sauna.price %>円</p>
 <p>サウナの室内温度：<%= @sauna.room_temperature %>度</p>
 <p>水風呂の温度：<%= @sauna.water_temperature %>度</p>
@@ -10,4 +17,3 @@
 
 
 <%= link_to "編集", admin_saunas_edit_path %>
-<%= link_to "レビュー一覧", admin_reviews_index_path(sauna_id: @sauna.id) %>
