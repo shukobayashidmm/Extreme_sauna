@@ -7,6 +7,7 @@
         <td><%= review.id %></td>
         <td><%= review.user.last_name %><%= review.user.first_name %></td>
         <td><%= link_to review.content, edit_public_sauna_review_path(id: review.id) %></td>
+        <td><%= link_to "このレビューにコメントする", public_comments_show_path(id: review.id, review_id: review.id, sauna_id: review.sauna_id) %></td>
     </tr>
     
 </table>

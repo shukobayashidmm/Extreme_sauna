@@ -1,0 +1,8 @@
+<h1><%= @review.user.last_name %><%= @review.user.first_name %>さんのレビュー</h1>
+<h2>内容：<%= @review.content %></h2>
+
+
+<% @comment.each do |comment| %>
+<p>名前：<%= comment.user.last_name %><%= comment.user.first_name %></p>
+<p>コメント内容：<%= comment.content %></p>
+<% end %>

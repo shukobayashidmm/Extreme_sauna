@@ -27,6 +27,15 @@ get '/public/saunas/:sauna_id/reviews/:id/edit' => 'public/reviews#edit', as: :e
 patch '/public/saunas/:sauna_id/reviews/:id' => 'public/reviews#update', as: :public_sauna_review_update
 delete '/public/saunas/:sauna_id/reviews/:id' => 'public/reviews#destroy', as: :public_sauna_review_destroy
 
+#コメント
+post '/public/:review_id/comments' => 'public/comments#create', as: :public_comments_create
+get '/public/:review_id/comments/:id' => 'public/comments#show', as: :public_comments_show
+get '/public/:review_id/comments/:id/edit' => 'public/comments#edit', as: :public_comments_edit
+patch '/public/:review_id/comments/:id' => 'public/comments#update', as: :public_comments_update
+delete '/public/:review_id/comments/:id' => 'public/comments#destroy',as: :public_comments_destroy
+
+
+
 
 #マイページ
 delete '/public/users/destroy' => 'public/users#destroy'
