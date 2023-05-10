@@ -2,7 +2,23 @@
 <h2>内容：<%= @review.content %></h2>
 
 
-<% @comment.each do |comment| %>
-<p>名前：<%= comment.user.last_name %><%= comment.user.first_name %></p>
-<p>コメント内容：<%= comment.content %></p>
+<% @comments.each do |comment| %>
+<table>
+    <tr>
+        <td>名前：<%= comment.user.last_name %><%= comment.user.first_name %></td>
+        <td>コメント内容：<%= link_to comment.content, public_comments_edit_path(@review,comment) %></td>
+        <td><% if current_user.id %>
+            <%= link_to "削除", public_comments_destroy_path(@review, comment), method: :delete %>
+            <% end %>
+        </td>
+    </tr>
+</table>
+
 <% end %>
+
+
+  <%= form_with model: @comment, url: public_comments_create_path, method: :post  do |f| %>
+   
+   <p>コメント内容</p><%= f.text_field :content %>
+  <%= f.submit '投稿' %>
+  <% end %>

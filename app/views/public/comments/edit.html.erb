@@ -1,0 +1,9 @@
+<h1><%= @review.user.last_name %><%= @review.user.first_name %>さんのコメント</h1>
+
+
+<%= form_with model: @comment, url: public_comments_update_path, method: :patch do |f| %>
+
+<p>内容：<%= f.text_field :content %></p>
+
+<%= f.submit '保存' %>
+<% end %>

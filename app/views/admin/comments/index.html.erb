@@ -1,0 +1,13 @@
+<% @comments.each do |comment| %>
+
+<table>
+    <tr>
+        <td><%= comment.user.last_name %><%= comment.user.first_name %></td>
+        <td><%= comment.content %></td>
+        <td><%= link_to "削除", admin_comments_destroy_path(@review, comment), method: :delete %></td>
+    </tr>
+</table>
+
+
+
+<% end %>

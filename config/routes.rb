@@ -72,6 +72,11 @@ get '/admin/saunas/result' => 'admin/saunas#result'
 get '/admin/:sauna_id/reviews/' => 'admin/reviews#index', as: :admin_reviews_index
 delete '/admin/:sauna_id/reviews/:id' => 'admin/reviews#destroy', as: :admin_reviews_destroy
 
+#コメント機能
+get '/admin/:review_id/comments/' => 'admin/comments#index', as: :admin_comments_index
+get '/admin/:review_id/comments/:id' => 'admin/comments#show', as: :admin_comments_show
+delete '/admin/:review_id/comments/:id' => 'admin/comments#destroy', as: :admin_comments_destroy
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
