@@ -38,9 +38,12 @@ class Admin::SaunasController < ApplicationController
     end
     
     def search
+        @q = Sauna.ransack(params[:q])
     end
     
     def result
+       @q = Sauna.ransack(params[:q])
+       @results = @q.result
     end
     
     private

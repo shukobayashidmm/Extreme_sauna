@@ -1,0 +1,4 @@
+<%= search_form_for(@q, url: admin_saunas_result_path) do |f| %>
+  <%= f.collection_select :prefecture_eq, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %>
+  <%= f.submit "Search" %>
+<% end %>

@@ -19,6 +19,7 @@
    <% elsif admin_signed_in? %>
      <%= link_to "会員一覧", admin_users_path %>
      <%= link_to "全国のサウナ一覧", admin_saunas_path %>
+     <%= link_to "サウナを検索する", admin_saunas_search_path %>
      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
    <% else %>
      <p>About</p>

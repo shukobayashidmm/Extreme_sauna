@@ -7,7 +7,7 @@
 <p>営業時間：<%= f.text_field :business_hour %></p>
 <p>サウナの室内温度：<%= f.text_field :room_temperature %>度</p>
 <p>水風呂の温度：<%= f.text_field :water_temperature %>度</p>
-<p>都道府県：<%= f.text_field :prefecture %></p>
+<p>都道府県：<%= f.select :prefecture, Sauna.prefectures.keys, {}, {class: 'hoge'} %></p>
 <p>住所：<%= f.text_field :address %></p>
 <%= f.submit '保存' %>
 <% end %>
