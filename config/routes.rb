@@ -14,10 +14,10 @@ root to: "public/homes#top"
 
 #サウナ情報
 get '/public/saunas' => 'public/saunas#index' 
-get '/public/saunas/:id' => 'public/saunas#show', as: :public_saunas_show
-get '/public/saunas/search' => 'public/saunas#search'
-get '/public/saunas/result' => 'public/saunas#result'
 get '/public/saunas/:id/map' => 'public/saunas#map', as: :public_saunas_map
+get '/public/saunas/search' => 'public/saunas#search', as: :public_saunas_search
+get '/public/saunas/result' => 'public/saunas#result', as: :public_saunas_result
+get '/public/saunas/:id' => 'public/saunas#show', as: :public_saunas_show
 
 #レビュー
 get '/public/saunas/:sauna_id/reviews' => 'public/reviews#index', as: :public_sauna_reviews

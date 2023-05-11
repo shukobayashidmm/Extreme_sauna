@@ -16,7 +16,7 @@
             <td><%= review.user.last_name %><%= review.user.first_name %></td>
             <td><%= review.content %></td>
             <td><%= link_to "削除", admin_reviews_destroy_path(sauna_id: @sauna.id, id: review.id), method: :delete %></td>
-            <td><%= link_to review.comments.count, admin_comments_index_path(review) %></td>
+            <td><%= link_to "#{review.comments.count}件", admin_comments_index_path(review) %></td>
         </tr>
     </tbody>
     <% end %>

@@ -1,0 +1,19 @@
+<h1><%= @results.first&.prefecture %>のサウナ一覧</h1>
+
+<% @results.each do |sauna| %>
+<table>
+        <tr>
+            <td><% if sauna.image.attached? %>
+                 <%= image_tag sauna.image, size: "80x80" %>
+                <% else %>
+                 <%= image_tag 'no_image', size: "80x80" %>
+                <% end %>
+            </td>
+            <td><%= link_to sauna.name, public_saunas_show_path(sauna) %></td>
+            <td><%= sauna.price %>円</td>
+            <td><%= sauna.prefecture %></td>
+            <td><%= sauna.address %></td>
+            <td>レビュー：<%= link_to "#{sauna.reviews.count}件", public_sauna_reviews_path(sauna) %></td>
+        </tr>
+</table>
+<% end %>

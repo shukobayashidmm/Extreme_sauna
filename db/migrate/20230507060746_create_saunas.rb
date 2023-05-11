@@ -7,7 +7,7 @@ class CreateSaunas < ActiveRecord::Migration[6.1]
       t.string :business_hour, null: false
       t.float :room_temperature, null: false
       t.float :water_temperature, null: false
-      t.string :prefecture, null: false
+      t.integer :prefecture, null: false
       t.string :address, null: false
       t.float :latitude
       t.float :longitude
