@@ -10,12 +10,19 @@ class Admin::UsersController < ApplicationController
     
     def edit
         @user = User.find(params[:id])
+        if @user.email == "guest@example.com"
+           render :show
+        end
     end
     
     def update
         user = User.find(params[:id])
-        user.update(user_params)
-        redirect_to admin_users_show_path
+        if user.email == "guest@example.com"
+           render :show
+        else
+          user.update(user_params)
+          redirect_to admin_users_show_path
+        end
     end
     
     def destroy

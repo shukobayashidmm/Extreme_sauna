@@ -1,4 +1,4 @@
-<h1><%= @user.last_name %><%= @user.first_name %>さんの詳細ページだよー</h1>
+<h1><%= @user.last_name %><%= @user.first_name %>さんの詳細画面</h1>
 
 
 <table>
@@ -31,4 +31,10 @@
         <td><%= @user.email %></td>
     </tr>
 </table>
-<%= link_to "編集する", admin_users_edit_path(@user) %>
+
+
+<% if @user.email == 'guest@example.com' %>
+    <p>ゲストユーザーはユーザー情報の編集ができません。</p>
+<% else %>
+    <%= link_to "編集する", admin_users_edit_path(@user) %>
+<% end %>

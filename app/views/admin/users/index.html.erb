@@ -12,7 +12,7 @@
     <tbody>
         <tr>
             <td><%= user.id %></td>
-            <td><%= link_to user.last_name, admin_users_show_path(user) %><%= link_to user.first_name, admin_users_show_path(user) %></td>
+            <td><%= link_to user.last_name + user.first_name, admin_users_show_path(user) %>
             <td><%= user.email %></td>
         </tr>
     </tbody>

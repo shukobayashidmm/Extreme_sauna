@@ -8,4 +8,9 @@
 <p>生年月日：<%= @user.birthday %></p>
 <p>メールアドレス：<%= @user.email %></p>
 
-<%= link_to "編集する", public_users_infomation_edit_path %>
+
+<% if @user.email == 'guest@example.com' %>
+    <p>ゲストユーザーはユーザー情報の編集ができません。</p>
+<% else %>
+    <%= link_to "編集する", public_users_infomation_edit_path %>
+<% end %>

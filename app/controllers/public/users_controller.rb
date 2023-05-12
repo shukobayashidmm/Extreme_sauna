@@ -7,6 +7,9 @@ class Public::UsersController < ApplicationController
     
     def edit
         @user = current_user
+        if @user.email == "guest@example.com"
+        render :show
+        end
     end
     
     def update
@@ -16,6 +19,10 @@ class Public::UsersController < ApplicationController
     end
     
     def unsubscribe
+        @user = current_user
+        if @user.email == "guest@example.com"
+          render :show
+        end
     end
     
     def destroy
