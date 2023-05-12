@@ -2,7 +2,7 @@ class Admin::SaunasController < ApplicationController
     
     
     def index
-        @saunas = Sauna.all
+        @saunas = Sauna.page(params[:page]).per(10)
     end
     
     def new

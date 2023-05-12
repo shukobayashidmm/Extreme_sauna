@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ExtremeSauna</title>
+    <title>極めろ！サウナ道</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -22,8 +22,8 @@
      <%= link_to "サウナを検索する", admin_saunas_search_path %>
      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
    <% else %>
-     <p>About</p>
-     <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+     <%= link_to "About", about_path %>
+     <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
      <%= link_to "ログイン", new_user_session_path %>
      <%= link_to "新規登録", new_user_registration_path %>
    <% end %>

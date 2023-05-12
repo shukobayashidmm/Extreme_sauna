@@ -13,6 +13,7 @@ end
 
 
 root to: "public/homes#top"
+get 'about' => 'public/homes#about'
 
 ###public###
 
