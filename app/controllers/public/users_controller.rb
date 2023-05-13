@@ -13,9 +13,12 @@ class Public::UsersController < ApplicationController
     end
     
     def update
-        user = current_user
-        user.update(user_params)
-        redirect_to public_users_my_page_path
+        @user = current_user
+        if @user.update(user_params)
+           redirect_to public_users_my_page_path
+        else
+           redirect_to request.referer
+        end
     end
     
     def unsubscribe

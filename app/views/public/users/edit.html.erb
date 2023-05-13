@@ -1,7 +1,9 @@
+
 <div class="container">
     <div class="row">
         <div class="col-7 ml-2 mx-auto">
             <h2>会員情報編集</h2>
+            <p class="text-danger">※入力欄が空の状態では保存できません。</p>
             <%= form_with model: @user, url: public_users_infomation_path, method: :patch do |f| %>
             <table class="table">
                 <thead>

@@ -13,7 +13,7 @@ end
 
 
 root to: "public/homes#top"
-get 'about', to: 'public/homes#about'
+get 'about' => 'public/homes#about'
 
 ###public###
 
