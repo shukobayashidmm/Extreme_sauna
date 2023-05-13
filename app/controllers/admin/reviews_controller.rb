@@ -1,4 +1,6 @@
 class Admin::ReviewsController < ApplicationController
+    before_action :authenticate_admin!
+    
     
     def index
         @sauna = Sauna.find(params[:sauna_id])

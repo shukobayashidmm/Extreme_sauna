@@ -1,4 +1,6 @@
 class Public::SaunasController < ApplicationController
+    before_action :authenticate_user!
+    
     
     def index
         @saunas = Sauna.page(params[:page])
