@@ -64,3 +64,7 @@ gem 'ransack'
 gem 'jp_prefecture'
 
 gem 'kaminari','~> 1.2.1'
+
+gem 'jquery-rails'
+
+gem 'rating'
