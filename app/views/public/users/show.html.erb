@@ -1,16 +1,47 @@
-<h1>マイページ</h1>
-
-<p>名前：<%= @user.last_name %><%= @user.first_name %></p>
-<p>フリガナ：<%= @user.last_name_kana %><%= @user.first_name_kana %></p>
-<p>郵便番号：<%= @user.postcode %></p>
-<p>住所：<%= @user.address %></p>
-<p>電話番号：<%= @user.telephone_number %></p>
-<p>生年月日：<%= @user.birthday %></p>
-<p>メールアドレス：<%= @user.email %></p>
-
-
-<% if @user.email == 'guest@example.com' %>
-    <p>ゲストユーザーはユーザー情報の編集ができません。</p>
-<% else %>
-    <%= link_to "編集する", public_users_infomation_edit_path %>
-<% end %>
+<div class="container">
+    <div class="row">
+        <div class="col-7 ml-2 mx-auto">
+        <h1>マイページ</h1>
+        <table class="table">
+            <tbody>
+            <tr>
+                <td>名前</td>
+                <td><%= @user.last_name + @user.first_name %></td>
+            </tr>
+            <tr>
+                <td>フリガナ</td>
+                <td><%= @user.last_name_kana %><%= @user.first_name_kana %></td>
+            </tr>
+            <tr>
+                <td>郵便番号</td>
+                <td><%= @user.postcode %></td>
+            </tr>
+            <tr>
+                <td>住所</td>
+                <td><%= @user.address %></td>
+            </tr>
+            <tr>
+                <td>電話番号</td>
+                <td><%= @user.telephone_number %></td>
+            </tr>
+            <tr>
+                <td>生年月日</td>
+                <td><%= @user.birthday %></td>
+            </tr>
+            <tr>
+                <td>メールアドレス</td>
+                <td><%= @user.email %></td>
+            </tr>
+            <tr>
+                <td><% if @user.email == 'guest@example.com' %>
+                      <p>ゲストユーザーはユーザー情報の編集ができません。</p>
+                    <% else %>
+                      <%= link_to "編集する", public_users_infomation_edit_path, class: "btn btn-success" %>
+                    <% end %>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</div>

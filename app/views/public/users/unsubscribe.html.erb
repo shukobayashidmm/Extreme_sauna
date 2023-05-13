@@ -1,3 +1,11 @@
-<h1>退会確認画面</h1>
-
-<%= link_to "本当に退会する", public_users_destroy_path(current_user), method: :delete %>
+<div class="container">
+        <div class="text-center">
+            <h1 class="fa-solid fa-ban">退会確認画面</h1>
+            <p>当サービスをご利用いただきありがとうございました。</p>
+            <p>退会をされてしまいますと今までのサービスが</p>
+            <p>ご利用できなくなってしまいます。</p>
+            <p>退会されるお客様は下記のリンクを押していただくと退会を実行します。</p>
+            <p><%= link_to "本当に退会する", public_users_destroy_path(current_user), method: :delete, class: "btn btn-danger" %>
+            ｜<%= link_to "マイページに戻る", public_users_my_page_path, class: "btn btn-info" %></p>
+        </div>
+</div>
