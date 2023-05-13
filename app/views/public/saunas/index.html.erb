@@ -14,8 +14,26 @@
         <td><%= sauna.prefecture %></td>
         <td><%= sauna.address %></td>
         <td>レビュー：<%= link_to "#{sauna.reviews.count}件", public_sauna_reviews_path(sauna) %></td>
+        <td><div id="review_star<%= sauna.id %>"></td>
     </tr>
 </table>
+
+
+<script>
+$(document).on('turbolinks:load', function() {
+  let elem = document.querySelector('#review_star<%= sauna.id %>');
+  if (elem == null) return;
+
+  elem.innerHTML = "";
+  let opt = {  
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    score: <%= sauna.reviews.average(:star).to_f.round(1) %>,
+    readOnly: true,
+  };
+  raty(elem, opt);
+});
+</script>
 
 
 <% end %>

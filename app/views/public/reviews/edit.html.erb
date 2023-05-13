@@ -2,7 +2,29 @@
 
 <p>レビュー内容：<%= f.text_area :content %></p>
 
+<div class="form-group" id="star">
+      <%= f.label :評価 %>
+      <%= f.hidden_field :rate, value: 0, id: :review_star, class: 'form-control' %>
+<div id="review_raty"></div>
+</div>
+
 <%= f.submit '保存' %>
 <% end %>
+
+
+<script>
+      $(document).on('turbolinks:load', function() {
+        let elem = document.querySelector('#review_raty');
+        if (elem == null) return;
+  
+        elem.innerHTML = ""
+        let opt = {  
+          starOn: "<%= asset_path('star-on.png') %>",
+          starOff: "<%= asset_path('star-off.png') %>",
+          scoreName: 'review[star]',
+        };
+        raty(elem, opt);
+      });
+</script>
 
 <%= link_to "削除", public_sauna_review_destroy_path, method: :delete %>
