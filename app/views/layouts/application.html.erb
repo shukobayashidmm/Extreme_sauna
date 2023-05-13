@@ -4,29 +4,15 @@
     <title>極めろ！サウナ道</title>
     
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <script src="https://kit.fontawesome.com/e70b314ceb.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if user_signed_in? %>
-     <%= link_to "マイページ", public_users_my_page_path %>
-     <%= link_to "全国のサウナ一覧",  public_saunas_path %>
-     <%= link_to "サウナを検索する", public_saunas_search_path %>
-     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-   <% elsif admin_signed_in? %>
-     <%= link_to "会員一覧", admin_users_path %>
-     <%= link_to "全国のサウナ一覧", admin_saunas_path %>
-     <%= link_to "サウナを検索する", admin_saunas_search_path %>
-     <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-   <% else %>
-     <%= link_to "About", about_path %>
-     <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post %>
-     <%= link_to "ログイン", new_user_session_path %>
-     <%= link_to "新規登録", new_user_registration_path %>
-   <% end %>
+    <%= render 'layouts/header' %>
     <%= yield %>
   </body>
 </html>

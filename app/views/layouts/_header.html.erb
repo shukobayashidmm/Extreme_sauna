@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <% if user_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "マイページ", public_users_my_page_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "全国のサウナ一覧",  public_saunas_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "サウナを検索する", public_saunas_search_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"nav-link active" %>
+        </li>
+        <% elsif admin_signed_in? %>
+        <li class="nav-item">
+          <%= link_to "会員一覧", admin_users_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "全国のサウナ一覧", admin_saunas_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "サウナを検索する", admin_saunas_search_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"nav-link active" %>
+        </li>
+        <% else %>
+        <li class="nav-item">
+          <%= link_to "About", about_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'ゲストログイン', users_guest_sign_in_path, method: :post, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "ログイン", new_user_session_path, class:"nav-link active" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "新規登録", new_user_registration_path, class:"nav-link active" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+   
