@@ -34,7 +34,7 @@
             </tr>
             <tr>
                 <td><% if @user.email == 'guest@example.com' %>
-                      <p>ゲストユーザーはユーザー情報の編集ができません。</p>
+                      <p class="text-danger">ゲストユーザーはユーザー情報の編集ができません。</p>
                     <% else %>
                       <%= link_to "編集する", public_users_infomation_edit_path, class: "btn btn-success" %>
                     <% end %>

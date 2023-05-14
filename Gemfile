@@ -70,3 +70,5 @@ gem 'jquery-rails'
 gem 'rating'
 
 gem 'dotenv-rails'
+
+gem 'bootstrap4-kaminari-views'

@@ -1,42 +1,62 @@
-<h1>全国のサウナ一覧ページ</h1>
+<div class="container">
+  <div class="text-center">
+      <h1>全国のサウナ一覧ページ</h1>
+  </div>
+     <div class="text-right">
+        <h4>Total：<%= @sauna.count %>件</h4>
+     </div>
+     <div class="text-center">
+       <table class="table">
+         <thead>
+           <tr>
+             <td>お店の画像</td>
+             <td>店名</td>
+             <td>入浴料</td>
+             <td>都道府県</td>
+             <td>住所</td>
+             <td>レビュー件数</td>
+             <td>レビュー評価</td>
+           </tr>
+         </thead>
+         <% @saunas.each do |sauna| %>
+         <tbody>
+           <tr>
+             <td><% if sauna.image.attached? %>
+                   <%= image_tag sauna.image, size: "80x80" %>
+                 <% else %>
+                   <%= image_tag 'no_image', size: "80x80" %>
+                 <% end %>
+             </td>
+             <td><%= link_to sauna.name, public_saunas_show_path(sauna) %></td>
+             <td><%= sauna.price %>円</td>
+             <td><%= sauna.prefecture %></td>
+             <td><%= sauna.address %></td>
+             <td><%= link_to "#{sauna.reviews.count}件", public_sauna_reviews_path(sauna) %></td>
+             <td><div id="review_star<%= sauna.id %>"></div><%= number_with_precision(sauna.reviews.average(:star), precision: 1) %></td>
+           </tr>
+         </tbody>
+         <script>
+            $(document).on('turbolinks:load', function() {
+               let elem = document.querySelector('#review_star<%= sauna.id %>');
+                 if (elem == null) return;
+                   elem.innerHTML = "";
+               let opt = {  
+               starOn: "<%= asset_path('star-on.png') %>",
+               starOff: "<%= asset_path('star-off.png') %>",
+               starHalf: '<%= asset_path('star-half.png') %>',
+               score: <%= sauna.reviews.average(:star).to_f.round(1) %>,
+               readOnly: true,
+               };
+             raty(elem, opt);
+            });
+          </script>
+         <% end %>
+       </table>
+     </div>
+     <div class="col-3 ml-2 mx-auto">
+       <%= paginate @saunas, theme: 'twitter-bootstrap-4' %>
+     </div>
+</div>
 
-<% @saunas.each do |sauna| %>
-<table>
-    <tr>
-        <td><% if sauna.image.attached? %>
-              <%= image_tag sauna.image, size: "80x80" %>
-            <% else %>
-              <%= image_tag 'no_image', size: "80x80" %>
-            <% end %>
-        </td>
-        <td><%= link_to sauna.name, public_saunas_show_path(sauna) %></td>
-        <td><%= sauna.price %>円</td>
-        <td><%= sauna.prefecture %></td>
-        <td><%= sauna.address %></td>
-        <td>レビュー：<%= link_to "#{sauna.reviews.count}件", public_sauna_reviews_path(sauna) %></td>
-        <td><div id="review_star<%= sauna.id %>"></td>
-    </tr>
-</table>
 
 
-<script>
-$(document).on('turbolinks:load', function() {
-  let elem = document.querySelector('#review_star<%= sauna.id %>');
-  if (elem == null) return;
-
-  elem.innerHTML = "";
-  let opt = {  
-    starOn: "<%= asset_path('star-on.png') %>",
-    starOff: "<%= asset_path('star-off.png') %>",
-    starHalf: '<%= asset_path('star-half.png') %>',
-    score: <%= sauna.reviews.average(:star).to_f.round(1) %>,
-    readOnly: true,
-  };
-  raty(elem, opt);
-});
-</script>
-
-
-<% end %>
-
-<%= paginate @saunas %>

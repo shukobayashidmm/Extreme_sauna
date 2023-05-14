@@ -1,4 +1,14 @@
-<%= search_form_for(@q, url: public_saunas_result_path) do |f| %>
-  <%= f.collection_select :prefecture_eq, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %>
-  <%= f.submit "Search" %>
-<% end %>
+<div class="container">
+  <div class="text-center"><br>
+    <h2>検索画面</h2>
+         <p>この画面では都道府県ごとにサウナをお調べいただけます。</p>
+         <p>お近くの都道府県でのお調べや、</p>
+         <p>気になった都道府県でのお調べにご活用ください。</p>
+       <%= search_form_for(@q, url: public_saunas_result_path) do |f| %>
+          <%= f.collection_select :prefecture_eq, JpPrefecture::Prefecture.all, :code, :name, class: 'form-control' %>
+          <%= f.submit "検索", class: "btn btn-primary" %>
+       <% end %>
+  </div>
+</div>
+
+

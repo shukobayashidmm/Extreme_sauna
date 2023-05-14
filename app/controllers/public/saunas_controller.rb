@@ -4,6 +4,7 @@ class Public::SaunasController < ApplicationController
     
     def index
         @saunas = Sauna.page(params[:page])
+        @sauna = Sauna.all
     end
     
     def show
