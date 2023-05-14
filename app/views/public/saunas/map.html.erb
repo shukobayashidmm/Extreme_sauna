@@ -1,14 +1,18 @@
-<h1><%= @sauna.name %>への行き方はこちら</h1>
-<p>都道府県：<%= @sauna.prefecture %></p>
-<p>住所：<%= @sauna.address %></p>
+<div class="container">
+  <div class="text-center">
+    <h1><%= @sauna.name %>への行き方はこちら</h1>
+      <p><strong>都道府県：</strong><%= @sauna.prefecture %></p>
+      <p><strong>住所：</strong><%= @sauna.address %></p>
+        <div id="map"></div>
+          <style>
+          #map {
+          height: 500px;
+          width: 100%;
+          }
+          </style>
+  </div>
+</div>
 
-<div id="map"></div>
-<style>
-     #map {
-     height: 500px;
-     width: 100%;
-    }
-</style>
 <script>
   function initMap() {
     var uluru = {lat: <%= @sauna.latitude %>, lng: <%= @sauna.longitude %>};
