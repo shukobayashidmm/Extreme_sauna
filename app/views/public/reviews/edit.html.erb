@@ -1,15 +1,36 @@
-<%= form_with model: @review, url: public_sauna_review_update_path, method: :patch do |f| %>
-
-<p>レビュー内容：<%= f.text_area :content %></p>
-
-<div class="form-group" id="star">
-      <%= f.label :評価 %>
-      <%= f.hidden_field :rate, value: 0, id: :review_star, class: 'form-control' %>
-<div id="review_raty"></div>
+<div class="container">
+  <div class="text-center"><br>
+    <h2>レビューを編集する</h2>
+  </div>
+  <%= form_with model: @review, url: public_sauna_review_update_path, method: :patch do |f| %>
+  <table class="table">
+    <tbody>
+      <tr>
+        <td>ご自身が記述した投稿内容を編集する</td>
+        <td><%= f.text_area :content, :size => "60x10" %></p></td>
+      </tr>
+      <tr>
+        <td>再評価する</td>
+        <td><div class="form-group" id="star">
+            <%= f.hidden_field :rate, value: 0, id: :review_star, class: 'form-control' %>
+            <div id="review_raty"></div>
+            </div>
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td><%= f.submit '保存', class: "btn btn-success" %></td>
+        <td><%= link_to "削除", public_sauna_review_destroy_path, method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+    </tbody>
+  </table>
+  <% end %>
 </div>
 
-<%= f.submit '保存' %>
-<% end %>
+
+      
+
+
 
 
 <script>
@@ -26,5 +47,3 @@
         raty(elem, opt);
       });
 </script>
-
-<%= link_to "削除", public_sauna_review_destroy_path, method: :delete %>

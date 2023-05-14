@@ -1,20 +1,27 @@
-<h1>投稿フォーム</h1>
-<%= form_with model: [@sauna, @review],  url: public_sauna_reviews_create_path, method: :post do |f| %>
-<p>コメント：<%= f.text_area :content %></p>
-
-
-<div class="form-group" id="star">
-      <%= f.label :評価 %>
-      <%= f.hidden_field :rate, value: 0, id: :review_star, class: 'form-control' %>
-      <div id="review_raty"></div>
+<div class="container">
+    <div class="text-left"><br>
+        <h1>レビューを投稿する</h1>
+    </div>
+    <%= form_with model: [@sauna, @review],  url: public_sauna_reviews_create_path, method: :post do |f| %>
+    <table class="table">
+        <tr>
+            <td>レビューを記述する</td>
+            <td><%= f.text_area :content, :size => "60x10" %></td>
+        </tr>
+        <tr>
+            <td>評価する</td>
+            <td><div class="form-group" id="star">
+                <%= f.hidden_field :rate, value: 0, id: :review_star, class: 'form-control' %>
+                <div id="review_raty"></div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><%= f.submit '投稿', class: "btn btn-success" %></td>
+        </tr>
+    </table>
+    <% end %>
 </div>
-    
-<%= f.submit '投稿' %>
-
-
-
-<% end %>
-
    <script>
       $(document).on('turbolinks:load', function() {
         let elem = document.querySelector('#review_raty');

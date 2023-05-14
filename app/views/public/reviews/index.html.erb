@@ -1,13 +1,15 @@
 <div class="container">
   <div class="text-center">
       <h2><%= @sauna.name %>についてのレビュー</h2>
-      
+        <div class="text-right">
+          <%= link_to "レビューを書く", new_public_sauna_review_path(sauna_id: @sauna.id), class: "fa-solid fa-pen fa-beat" %>
+        </div>
       <table class="table">
         <thead>
           <tr>
-            <td>ユーザーネーム</td>
+            <td>会員名</td>
             <td>レビュー内容</td>
-            <td>評価</td>
+            <td>星5段階評価</td>
             <td>レビューに対するコメント</td>
           </tr>
         </thead>
@@ -37,4 +39,3 @@
       </table>
   </div>
 </div>
-<%= link_to "投稿フォーム", new_public_sauna_review_path(sauna_id: @sauna.id) %>
