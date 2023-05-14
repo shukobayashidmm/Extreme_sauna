@@ -1,6 +1,7 @@
 <div class="container">
     <div class="text-left"><br>
         <h1>レビューを投稿する</h1>
+        <p class="text-danger">※空の記述内容、評価は投稿できません。</p>
     </div>
     <%= form_with model: [@sauna, @review],  url: public_sauna_reviews_create_path, method: :post do |f| %>
     <table class="table">
@@ -15,8 +16,6 @@
                 <div id="review_raty"></div>
                 </div>
             </td>
-        </tr>
-        <tr>
             <td><%= f.submit '投稿', class: "btn btn-success" %></td>
         </tr>
     </table>

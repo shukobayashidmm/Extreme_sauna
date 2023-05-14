@@ -1,5 +1,5 @@
 class Public::CommentsController < ApplicationController
-    before_action :authenticate_user!
+    
     
     def create
         review = Review.find(params[:review_id])
@@ -20,13 +20,19 @@ class Public::CommentsController < ApplicationController
     def edit
         @review = Review.find(params[:review_id])
         @comment = Comment.find(params[:id])
+        unless @comment.user == current_user
+           redirect_to  request.referer
+        end
     end
     
     def update
         review = Review.find(params[:review_id])
         comment = Comment.find(params[:id])
-        comment.update(comment_params)
-        redirect_to public_comments_show_path(id: comment.id, review_id: review.id)
+        if comment.update(comment_params)
+           redirect_to public_comments_show_path(id: comment.id, review_id: review.id)
+        else 
+           redirect_to request.referer
+        end
     end
     
     def destroy

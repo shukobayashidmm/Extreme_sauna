@@ -1,24 +1,41 @@
-<h1><%= @review.user.last_name %><%= @review.user.first_name %>さんのレビュー</h1>
-<h2>内容：<%= @review.content %></h2>
+<div class="container">
+    <div class="text-left">
+        <h2><%= @review.user.last_name + @review.user.first_name %>さんのレビュー</h2>
+        <h3><%= @review.content %></h3>
+    </div><br><br>
+    <div class="text-left">
+        <h3><%= @review.user.last_name + @review.user.first_name %>さんへのコメント一覧</h3>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>名前</td>
+                <td>コメント内容</td>
+                <td></td>
+            </tr>
+        </thead>
+        <% @comments.each do |comment| %>
+        <tbody>
+            <tr>
+                <td><%= comment.user.last_name %><%= comment.user.first_name %></td>
+                <td><%= link_to comment.content, public_comments_edit_path(@review,comment) %></td>
+                <td><% if comment.user_id == current_user.id %>
+                      <%= link_to "削除", public_comments_destroy_path(@review, comment), method: :delete, class: "btn btn-danger" %>
+                    <% end %>
+                </td>
+            </tr>
+        </tbody>
+        <% end %>
+    </table>
+    <h3><%= @review.user.last_name + @review.user.first_name %>さんにコメントを書く</h3>
+    <%= form_with model: @comment, url: public_comments_create_path, method: :post  do |f| %>
+      <p>コメントを投稿する</p><%= f.text_field :content, :size => "60x10" %>
+    <%= f.submit '投稿', class: "btn btn-success" %>
+    <% end %>
+</div>
 
 
-<% @comments.each do |comment| %>
-<table>
-    <tr>
-        <td>名前：<%= comment.user.last_name %><%= comment.user.first_name %></td>
-        <td>コメント内容：<%= link_to comment.content, public_comments_edit_path(@review,comment) %></td>
-        <td><% if current_user.id %>
-            <%= link_to "削除", public_comments_destroy_path(@review, comment), method: :delete %>
-            <% end %>
-        </td>
-    </tr>
-</table>
-
-<% end %>
 
 
-  <%= form_with model: @comment, url: public_comments_create_path, method: :post  do |f| %>
    
-   <p>コメント内容</p><%= f.text_field :content %>
-  <%= f.submit '投稿' %>
-  <% end %>
+   

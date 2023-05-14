@@ -1,9 +1,12 @@
-<h1><%= @review.user.last_name %><%= @review.user.first_name %>さんのコメント</h1>
+<div class="container">
+    <h3>コメント内容を編集する</h3>
+    <p>コメント</p>
+    <%= form_with model: @comment, url: public_comments_update_path, method: :patch do |f| %>
+      <p>記述したコメント内容</p>
+      <p><%= f.text_field :content %></p>
+      <%= link_to "戻る", public_comments_show_path(@review), class: "btn btn-info" %>｜｜<%= f.submit '保存', class: "btn btn-success" %>
+    <% end %>
+</div>
 
 
-<%= form_with model: @comment, url: public_comments_update_path, method: :patch do |f| %>
 
-<p>内容：<%= f.text_field :content %></p>
-
-<%= f.submit '保存' %>
-<% end %>
