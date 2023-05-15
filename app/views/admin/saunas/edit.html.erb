@@ -1,14 +1,52 @@
-<h1><%= @sauna.name %>の編集画面</h1>
+<div class="container">
+    <div class="text-center"><br>
+         <h1><%= @sauna.name %>の情報を編集する</h1>
+         <%= form_with model: @sauna, url: admin_saunas_update_path, method: :patch do |f| %>
+         <div class="text-left">
+         <table class="table">
+             <tbody>
+                 <tr>
+                     <td>店名</td>
+                     <td><%= f.text_field :name %></td>
+                 </tr>
+                 <tr>
+                     <td>イメージ画像</td>
+                     <td> <%= f.file_field :image, accept: "image/*" %></td>
+                 </tr>
+                 <tr>
+                     <td>入浴料</td>
+                     <td><%= f.text_field :price %>円</td>
+                 </tr>
+                 <tr>
+                     <td>営業時間(〇〇:〇〇〜〇〇:〇〇)</td>
+                     <td><%= f.text_field :business_hour %></td>
+                 </tr>
+                 <tr>
+                     <td>サウナの室内温度</td>
+                     <td><%= f.text_field :room_temperature %>℃</td>
+                 </tr>
+                 <tr>
+                     <td>水風呂の温度</td>
+                     <td><%= f.text_field :water_temperature %>℃</td>
+                 </tr>
+                 <tr>
+                     <td>都道府県</td>
+                     <td><%= f.select :prefecture, Sauna.prefectures.keys, {}, {class: 'hoge'} %></td>
+                 </tr>
+                 <tr>
+                     <td>住所</td>
+                     <td><%= f.text_field :address %></td>
+                 </tr>
+                 <tr>
+                     <td><%= f.submit '保存', class: "btn btn-success" %></td>
+                     <td><%= link_to "削除", admin_saunas_destroy_path(@sauna), method: :delete, class: "btn btn-danger" %></td>
+                 </tr>
+             </tbody>
+         </table>
+         </div>
+         <% end %>
+    </div>
+</div>
 
-<%= form_with model: @sauna, url: admin_saunas_update_path, method: :patch do |f| %>
-<p>店名：<%= f.text_field :name %></p>
-<p>店の外観： <%= f.file_field :image, accept: "image/*" %></p>
-<p>料金：<%= f.text_field :price %>円</p>
-<p>営業時間：<%= f.text_field :business_hour %></p>
-<p>サウナの室内温度：<%= f.text_field :room_temperature %>度</p>
-<p>水風呂の温度：<%= f.text_field :water_temperature %>度</p>
-<p>都道府県：<%= f.select :prefecture, Sauna.prefectures.keys, {}, {class: 'hoge'} %></p>
-<p>住所：<%= f.text_field :address %></p>
-<%= f.submit '保存' %>
-<% end %>
-<%= link_to "削除", admin_saunas_destroy_path(@sauna), method: :delete %>
+
+

@@ -5,7 +5,7 @@
             <p>退会をされてしまいますと今までのサービスが</p>
             <p>ご利用できなくなってしまいます。</p>
             <p>退会されるお客様は下記のリンクを押していただくと退会を実行します。</p>
-            <p><%= link_to "退会する", public_users_destroy_path(current_user), method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
+            <p><%= link_to "退会する", public_users_destroy_path, method: :delete, data: {confirm: "本当に削除しますか？"}, class: "btn btn-danger" %>
             ｜<%= link_to "マイページに戻る", public_users_my_page_path, class: "btn btn-info" %></p>
         </div>
 </div>

@@ -1,26 +1,44 @@
-<h1><%= @sauna.name %>のレビュー一覧</h1>
+<div class="container">
+    <div class="text-center"><br>
+        <h1><%= @sauna.name %>についてのレビュー</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                   <td>会員名</td>
+                   <td>レビュー内容</td>
+                   <td>レビュー評価</td>
+                   <td>レビューに対するコメント</td>
+                   <td>このレビューを削除する</td>
+                </tr>
+            </thead>
+            <% @reviews.each do |review| %>
+            <tbody>
+                <tr>
+                    <td><%= review.user.last_name %><%= review.user.first_name %></td>
+                    <td><%= review.content %></td>
+                    <td><div id="review_star<%= review.id%>"></div></td>
+                    <td><%= link_to "#{review.comments.count}件", admin_comments_index_path(review) %></td>
+                    <td><%= link_to "削除", admin_reviews_destroy_path(sauna_id: @sauna.id, id: review.id), method: :delete, class: "btn btn-danger" %></td>
+                </tr>
+            </tbody>
+            <script>
+            $(document).on('turbolinks:load', function() {
+              let elem = document.querySelector('#review_star<%= review.id %>');
+              if (elem == null) return;
+                elem.innerHTML = "";
+              let opt = {  
+              starOn: "<%= asset_path('star-on.png') %>",
+              starOff: "<%= asset_path('star-off.png') %>",
+              score: "<%= review.star %>",
+              readOnly: true,
+              };
+              raty(elem, opt);
+              });
+           </script>
+            <% end %>
+        </table>
+    </div>
+</div>
 
 
-<table>
-    <thead>
-    <tr>
-        <td>会員名</td>
-        <td>レビュー内容</td>
-        <td></td>
-        <td>コメント</td>
-    </tr>
-    </thead>
-    <% @reviews.each do |review| %>
-    <tbody>
-        <tr>
-            <td><%= review.user.last_name %><%= review.user.first_name %></td>
-            <td><%= review.content %></td>
-            <td><%= link_to "削除", admin_reviews_destroy_path(sauna_id: @sauna.id, id: review.id), method: :delete %></td>
-            <td><%= link_to "#{review.comments.count}件", admin_comments_index_path(review) %></td>
-        </tr>
-    </tbody>
-    <% end %>
-</table>
-
-
-
+    

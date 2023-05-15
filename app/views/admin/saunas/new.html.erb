@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="text-center">
+    <div class="text-left"><br>
         <h1>新規店舗情報を投稿する</h1>
         <%= form_with model: @sauna, url: admin_saunas_create_path, method: :post do |f| %>
         <table class="table">
@@ -34,9 +34,6 @@
             <tr>
                 <td>住所</td>
                 <td><%= f.text_field :address %></td>
-            </tr>
-            <tr>
-                <td></td>
                 <td><%= f.submit '作成する', class: "btn btn-success" %></td>
             </tr>
         </table>

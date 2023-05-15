@@ -30,8 +30,11 @@ class Admin::SaunasController < ApplicationController
     
     def update
         sauna = Sauna.find(params[:id])
-        sauna.update(sauna_params)
-        redirect_to admin_saunas_show_path
+        if sauna.update(sauna_params)
+           redirect_to admin_saunas_show_path
+        else
+           redirect_to request.referer
+        end
     end
     
     def destroy
