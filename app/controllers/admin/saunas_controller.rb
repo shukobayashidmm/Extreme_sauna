@@ -11,9 +11,12 @@ class Admin::SaunasController < ApplicationController
     
     
     def create
-        sauna = Sauna.new(sauna_params)
-        sauna.save
-        redirect_to admin_saunas_path
+        @sauna = Sauna.new(sauna_params)
+        if @sauna.save
+           redirect_to admin_saunas_path
+        else
+           redirect_to request.referer
+        end
     end
     
     def show

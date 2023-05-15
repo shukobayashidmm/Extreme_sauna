@@ -1,19 +1,47 @@
-<h1><%= @sauna.name %>の詳細ページ</h1>
+<div class="container">
+  <div class="text-center"><br>
+      <h1><%= @sauna.name %>の詳細ページ</h1>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>店名</td>
+            <td><%= @sauna.name %></td>
+          </tr>
+          <tr>
+            <td>店の外観</td>
+            <td><% if @sauna.image.attached? %>
+                  <%= image_tag @sauna.image, size: "300x300" %>
+                <% else %>
+                  <%= image_tag 'no_image', size: "300x300" %>
+                <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td>入浴料</td>
+            <td><%= @sauna.price %>円</td>
+          </tr>
+          <tr>
+            <td>サウナの室内温度</td>
+            <td><%= @sauna.room_temperature %>℃</td>
+          </tr>
+          <tr>
+            <td>水風呂の温度</td>
+            <td><%= @sauna.water_temperature %>℃</td>
+          </tr>
+          <tr>
+            <td>都道府県</td>
+            <td><%= @sauna.prefecture %></td>
+          </tr>
+          <tr>
+            <td>住所</td>
+            <td><%= @sauna.address %></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><%= link_to "編集", admin_saunas_edit_path, class: "btn btn-success" %></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+</div>
 
-<p>サウナID：<%= @sauna.id %></p>
-<p>店名：<%= @sauna.name %></p>
-<p>店の外観：
-<% if @sauna.image.attached? %>
-  <%= image_tag @sauna.image, size: "300x300" %>
-<% else %>
-  <%= image_tag 'no_image', size: "300x300" %>
-<% end %>
-</p>
-<p>料金：<%= @sauna.price %>円</p>
-<p>サウナの室内温度：<%= @sauna.room_temperature %>度</p>
-<p>水風呂の温度：<%= @sauna.water_temperature %>度</p>
-<p>都道府県：<%= @sauna.prefecture %></p>
-<p>住所：<%= @sauna.address %></p>
-
-
-<%= link_to "編集", admin_saunas_edit_path %>

@@ -1,30 +1,57 @@
-<h1>全国のサウナ一覧</h1>
-<%= link_to "サウナを登録する", admin_saunas_new_path %>
+<div class="container">
+    <div class="text-center"><br>
+        <h1>全国のサウナ一覧</h1>
+        <div class ="text-right">
+            <%= link_to "サウナを登録する", admin_saunas_new_path, class: "fa-solid fa-pen-nib" %>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>店名</td>
+                    <td>料金</td>
+                    <td>営業時間</td>
+                    <td>都道府県</td>
+                    <td>住所</td>
+                    <td>レビュー</td>
+                    <td>レビュー評価(平均値)</td>
+                </tr>
+            </thead>
+            <% @saunas.each do |sauna| %>
+            <tbody>
+                <tr>
+                    <td><%= link_to sauna.name, admin_saunas_show_path(sauna) %></td>
+                    <td><%= sauna.price %>円</td>
+                    <td><%= sauna.business_hour %></td>
+                    <td><%= sauna.prefecture %></td>
+                    <td><%= sauna.address %></td>
+                    <td><%= link_to "#{sauna.reviews.count}件", admin_reviews_index_path(sauna.id) %></td>
+                    <td><div id="review_star<%= sauna.id %>"></div><%= number_with_precision(sauna.reviews.average(:star), precision: 1) %></td>
+                </tr>
+            </tbody>
+            <script>
+            $(document).on('turbolinks:load', function() {
+               let elem = document.querySelector('#review_star<%= sauna.id %>');
+                 if (elem == null) return;
+                   elem.innerHTML = "";
+               let opt = {  
+               starOn: "<%= asset_path('star-on.png') %>",
+               starOff: "<%= asset_path('star-off.png') %>",
+               starHalf: '<%= asset_path('star-half.png') %>',
+               score: <%= sauna.reviews.average(:star).to_f.round(1) %>,
+               readOnly: true,
+               };
+             raty(elem, opt);
+            });
+          </script>
+            <% end %>
+        </table>
+        <div class="col-3 ml-2 mx-auto">
+            <%= paginate @saunas, theme: 'twitter-bootstrap-4' %>
+        </div>
+    </div>
+</div>
 
 
-<table>
-    <thead>
-        <tr>
-            <td>店名</td>
-            <td>料金</td>
-            <td>営業時間</td>
-            <td>都道府県</td>
-            <td>住所</td>
-            <td>レビュー</td>
-        </tr>
-    </thead>
-    <% @saunas.each do |sauna| %>
-    <tbody>
-        <tr>
-            <td><%= link_to sauna.name, admin_saunas_show_path(sauna) %></td>
-            <td><%= sauna.price %>円</td>
-            <td><%= sauna.business_hour %></td>
-            <td><%= sauna.prefecture %></td>
-            <td><%= sauna.address %></td>
-            <td><%= link_to "#{sauna.reviews.count}件", admin_reviews_index_path(sauna.id) %></td>
-        </tr>
-    </tbody>
-    <% end %>
-</table>
 
-<%= paginate @saunas %>
+
+        
