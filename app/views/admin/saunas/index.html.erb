@@ -7,6 +7,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <td>イメージ画像</td>
                     <td>店名</td>
                     <td>料金</td>
                     <td>営業時間</td>
@@ -19,6 +20,12 @@
             <% @saunas.each do |sauna| %>
             <tbody>
                 <tr>
+                    <td><% if sauna.image.attached? %>
+                          <%= image_tag sauna.image, size: "80x80" %>
+                        <% else %>
+                          <%= image_tag 'no_image', size: "80x80" %>
+                        <% end %>
+                    </td>
                     <td><%= link_to sauna.name, admin_saunas_show_path(sauna) %></td>
                     <td><%= sauna.price %>円</td>
                     <td><%= sauna.business_hour %></td>
