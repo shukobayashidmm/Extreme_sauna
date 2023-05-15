@@ -1,17 +1,50 @@
-<h1><%= @user.last_name %><%= @user.first_name %>さんの編集だよ〜〜！</h1>
+<div class="container">
+    <div class="text-center">
+         <h1><%= @user.last_name + @user.first_name %>さんの情報を編集する</h1>
+         <%= form_with model: @user, url: admin_users_update_path, method: :patch do |f| %>
+         <table class="table">
+             <tbody>
+                 <tr>
+                     <td>名前</td>
+                     <td><%= f.text_field :last_name %></td>
+                     <td><%= f.text_field :first_name %></td>
+                 </tr>
+                 <tr>
+                     <td>フリガナ</td>
+                     <td><%= f.text_field :last_name_kana %></td>
+                     <td><%= f.text_field :first_name_kana %></td>
+                 </tr>
+                 <tr>
+                     <td>郵便番号</td>
+                     <td><%= f.text_field :postcode %></td>
+                 </tr>
+                 <tr>
+                     <td>住所</td>
+                     <td><%= f.text_field :address %></td>
+                 </tr>
+                 <tr>
+                     <td>電話番号</td>
+                     <td><%= f.text_field :telephone_number %></td>
+                 </tr>
+                 <tr>
+                     <td>生年月日</td>
+                     <td><%= f.text_field :birthday %></td>
+                 </tr>
+                 <tr>
+                     <td>メールアドレス</td>
+                     <td><%= f.text_field :email %></td>
+                 </tr>
+                 <tr>
+                     <td></td>
+                     <td><%= f.submit '保存', class: "btn btn-success" %></td>
+                     <td><%= link_to "削除する", admin_users_destroy_path(@user), method: :delete, class: "btn btn-danger" %></td>
+                 </tr>
+             </tbody>
+         </table>
+         <% end %>
+    </div>
+</div>
 
-<%= form_with model: @user, url: admin_users_update_path, method: :patch do |f| %>
 
-<p>名前：<%= f.text_field :last_name %><%= f.text_field :first_name %></p>
-<p>フリガナ：<%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></p>
-<p>郵便番号：<%= f.text_field :postcode %></p>
-<p>住所：<%= f.text_field :address %></p>
-<p>電話番号：<%= f.text_field :telephone_number %></p>
-<p>生年月日：<%= f.text_field :birthday %></p>
-<p>メールアドレス：<%= f.text_field :email %></p>
+ 
 
- <%= f.submit '保存' %>
-<% end %>
-
-
-<%= link_to "削除する", admin_users_destroy_path(@user), method: :delete %>

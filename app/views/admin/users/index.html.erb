@@ -1,22 +1,27 @@
-<h1>会員一覧</h1>
+<div class="container">
+    <div class="text-center"><br>
+        <h1>会員一覧</h1>
+        <table class="table">
+            <thead>
+                <tr class="table-active">
+                    <td><b>会員ID</b></td>
+                    <td><b>氏名</b></td>
+                    <td><b>メールアドレス</b></td>
+                </tr>
+            </thead>
+            <% @users.each do |user| %>
+            <tbody>
+                <tr>
+                    <td><%= user.id %></td>
+                    <td><%= link_to user.last_name + user.first_name, admin_users_show_path(user) %>
+                    <td><%= user.email %></td>
+                </tr>
+            </tbody>
+            <% end %>
+        </table>
+    </div>
+    <div class="col-3 ml-2 mx-auto">
+        <%= paginate @users, theme: 'twitter-bootstrap-4' %>
+    </div>
+</div>
 
-<table>
-    <thead>
-        <tr>
-            <td>会員ID</td>
-            <td>氏名</td>
-            <td>メールアドレス</td>
-        </tr>
-    </thead>
-    <% @users.each do |user| %>
-    <tbody>
-        <tr>
-            <td><%= user.id %></td>
-            <td><%= link_to user.last_name + user.first_name, admin_users_show_path(user) %>
-            <td><%= user.email %></td>
-        </tr>
-    </tbody>
-    <% end %>
-</table>
-
-<%= paginate @users %>
