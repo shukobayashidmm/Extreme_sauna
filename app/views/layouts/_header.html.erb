@@ -2,6 +2,11 @@
       <h2 class="collapse navbar-collapse justify-content-center">
         <a href="/" ><img class="card-img" src="/assets/logo.jpg" style="height: 100px; width: 100%;" /></a>
 </nav>
+<div class="text-right bg-light">
+      <% if user_signed_in? %>
+        <%= current_user.last_name + current_user.first_name %>さんようこそ
+      <% end %>
+</div>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
