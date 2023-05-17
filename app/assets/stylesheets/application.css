@@ -15,5 +15,5 @@
  */
 
 body {
- background-image: url("logo.jpg"), url("no_image.jpg"), url("sauna.jpg"), url("sauna_top.jpg"), url("star-half.png"), url("star-off.png"), url("star-on.png");
+ background-image: url("images/logo.jpg"), url("images/no_image.jpg"), url("images/sauna.jpg"), url("images/sauna_top.jpg"), url("images/star-half.png"), url("images/star-off.png"), url("images/star-on.png");
 }
