@@ -14,6 +14,3 @@
  *= require_self
  */
 
-body {
- background-image: url("images/logo.jpg"), url("images/no_image.jpg"), url("images/sauna.jpg"), url("images/sauna_top.jpg"), url("images/star-half.png"), url("images/star-off.png"), url("images/star-on.png");
-}

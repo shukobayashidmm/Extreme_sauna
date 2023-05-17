@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light">
       <h2 class="collapse navbar-collapse justify-content-center">
-        <a href="/" ><img class="card-img" src="/assets/logo.jpg" style="height: 100px; width: 100%;" /></a>
+        <a href="/" ><img class="card-img" src="<%= asset_path('logo.jpg') %>" style="height: 100px; width: 100%;" /></a>
 </nav>
 <div class="text-right bg-light">
       <% if user_signed_in? %>
