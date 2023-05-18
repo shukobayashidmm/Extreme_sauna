@@ -37,7 +37,6 @@ class Sauna < ApplicationRecord
     has_one_attached :image
     
     validates :name, presence: true
-    validates :image, presence: true
     validates :price, presence: true
     validates :business_hour, presence: true
     validates :room_temperature, presence: true
