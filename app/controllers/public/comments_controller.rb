@@ -45,6 +45,14 @@ class Public::CommentsController < ApplicationController
         redirect_to request.referer
     end
     
+    def reload
+      @review = Review.find(params[:review_id])
+      @comments = @review.comments
+      redirect_to public_comments_show_path(review_id: @review, id: @comments)
+    end
+
+
+    
     
     private
     
