@@ -7,7 +7,7 @@ class Public::CommentsController < ApplicationController
         @comment.review_id = review.id
         @comment.user_id = current_user.id
         if @comment.save
-           redirect_to public_comments_show_path(id: comment.review_id)
+           redirect_to public_comments_show_path(id: @comment.review_id)
         else
            render :new
         end
