@@ -3,12 +3,14 @@ class Public::CommentsController < ApplicationController
     
     def create
         review = Review.find(params[:review_id])
-        comment = Comment.new(comment_params)
-        comment.review_id = review.id
-        comment.user_id = current_user.id
-        comment.save
-        redirect_to public_comments_show_path(id: comment.review_id)
-        
+        @comment = Comment.new(comment_params)
+        @comment.review_id = review.id
+        @comment.user_id = current_user.id
+        if @comment.save
+           redirect_to public_comments_show_path(id: comment.review_id)
+        else
+           render :new
+        end
     end
     
     def show

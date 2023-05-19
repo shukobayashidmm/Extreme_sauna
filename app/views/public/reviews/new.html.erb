@@ -3,6 +3,14 @@
         <h1>レビューを投稿する</h1>
         <p class="text-danger">※空の記述内容、評価は投稿できません。</p>
     </div>
+    <% if @review.errors.any? %>
+       <%= @review.errors.count %>件のエラーが発生しました
+    <ul>
+       <% @review.errors.full_messages.each do |message| %>
+         <li><%= message %></li>
+       <% end %>
+    </ul>
+    <% end %>
     <%= form_with model: [@sauna, @review],  url: public_sauna_reviews_create_path, method: :post do |f| %>
     <table class="table">
         <tr>
