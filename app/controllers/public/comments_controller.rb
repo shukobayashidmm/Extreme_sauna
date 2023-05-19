@@ -27,8 +27,8 @@ class Public::CommentsController < ApplicationController
     
     def update
         review = Review.find(params[:review_id])
-        comment = Comment.find(params[:id])
-        if comment.update(comment_params)
+        @comment = Comment.find(params[:id])
+        if @comment.update(comment_params)
            redirect_to public_comments_show_path(id: comment.id, review_id: review.id)
         else 
            redirect_to request.referer

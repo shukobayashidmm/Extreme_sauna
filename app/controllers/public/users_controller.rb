@@ -17,8 +17,12 @@ class Public::UsersController < ApplicationController
         if @user.update(user_params)
            redirect_to public_users_my_page_path
         else
-           redirect_to request.referer
+           render :edit
         end
+    end
+    
+    def reload
+        redirect_to public_users_infomation_edit_path
     end
     
     def unsubscribe

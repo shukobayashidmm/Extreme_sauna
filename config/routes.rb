@@ -47,6 +47,7 @@ delete '/public/users/destroy' => 'public/users#destroy'
 get '/public/users/my_page' => 'public/users#show'
 get '/public/users/infomation/edit' => 'public/users#edit'
 patch '/public/users/infomation' => 'public/users#update'
+get '/public/users/infomation' => 'public/users#reload'
 get '/public/users/unsubscribe' => 'public/users#unsubscribe'
 
 

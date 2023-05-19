@@ -1,19 +1,28 @@
 
 <div class="container">
-    <div class="row">
-        <div class="col-7 ml-2 mx-auto">
+    <div class="text-left">
             <h2>会員情報編集</h2>
             <p class="text-danger">※入力欄が空の状態では保存できません。</p>
+            <% if @user.errors.any? %>
+              <%= @user.errors.count %>件のエラーが発生しました
+            <ul>
+              <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+            <% end %>
+            </ul>
+            <% end %>
             <%= form_with model: @user, url: public_users_infomation_path, method: :patch do |f| %>
             <table class="table">
                 <thead>
                     <tr>
                         <td>名前</td>
-                        <td><%= f.text_field :last_name %><%= f.text_field :first_name %></td>
+                        <td>(姓)<%= f.text_field :last_name %></td>
+                        <td>(名)<%= f.text_field :first_name %></td>
                     </tr>
                     <tr>
                         <td>フリガナ</td>
-                        <td><%= f.text_field :last_name_kana %><%= f.text_field :first_name_kana %></td>
+                        <td>(セイ)<%= f.text_field :last_name_kana %></td>
+                        <td>(メイ)<%= f.text_field :first_name_kana %></td>
                     </tr>
                     <tr>
                         <td>郵便番号</td>
@@ -44,7 +53,6 @@
             <% end %>
         </div>
     </div>
-</div>
 
 
 
