@@ -25,6 +25,10 @@ class Public::UsersController < ApplicationController
         redirect_to public_users_infomation_edit_path
     end
     
+    def register
+        redirect_to new_user_registration_path
+    end
+    
     def unsubscribe
         @user = current_user
         if @user.email == "guest@example.com"

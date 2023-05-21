@@ -30,4 +30,8 @@ class Public::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to public_users_my_page_path
   end
+  
+  def register
+        redirect_to edit_user_registration_path
+  end
 end
