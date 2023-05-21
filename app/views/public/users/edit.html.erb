@@ -15,34 +15,36 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <td>名前</td>
-                        <td>(漢姓)<%= f.text_field :last_name %></td>
-                        <td>(漢名)<%= f.text_field :first_name %></td>
+                        <td>姓</td>
+                        <td><%= f.text_field :last_name %></td>
+                        <td>名</td>
+                        <td><%= f.text_field :first_name %></td>
                     </tr>
                     <tr>
-                        <td>フリガナ</td>
-                        <td>(セイ)<%= f.text_field :last_name_kana %></td>
-                        <td>(メイ)<%= f.text_field :first_name_kana %></td>
+                        <td>セイ</td>
+                        <td><%= f.text_field :last_name_kana %></td>
+                        <td>メイ</td>
+                        <td><%= f.text_field :first_name_kana %></td>
                     </tr>
                     <tr>
-                        <td>郵便番号</td>
+                        <td>郵便番号(例: 1110000)</td>
                         <td><%= f.text_field :postcode %></td>
                     </tr>
                     <tr>
                         <td>住所</td>
-                        <td><%= f.text_field :address, size: 42 %></td>
+                        <td><%= f.text_field :address %></td>
                     </tr>
                     <tr>
-                        <td>電話番号</td>
+                        <td>電話番号(例: 09011112222)</td>
                         <td><%= f.text_field :telephone_number %></td>
                     </tr>
                     <tr>
-                        <td>生年月日</td>
+                        <td>生年月日(例: 19950101)</td>
                         <td><%= f.text_field :birthday %></td>
                     </tr>
                     <tr>
                         <td>メールアドレス</td>
-                        <td><%= f.text_field :email %></td>
+                        <td><%= f.email_field :email %></td>
                     </tr>
                     <tr>
                         <td><%= f.submit '保存', class: "btn btn-success" %></td>
