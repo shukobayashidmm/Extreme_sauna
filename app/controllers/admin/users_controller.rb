@@ -33,7 +33,6 @@ class Admin::UsersController < ApplicationController
         user.destroy
         redirect_to admin_users_path 
     end
-    a
     
     
      private
